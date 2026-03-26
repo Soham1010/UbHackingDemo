@@ -1,6 +1,8 @@
 # ⚡ UB Hacking: Gotta Hack 'Em All!
 
 > 🎮 A Pokémon-themed hackathon website for the **University at Buffalo's** annual 36-hour hackathon, built with Next.js, React, and a whole lotta Pokémon love.
+>
+> 🚀 **Live Demo:** [https://ubhackingdemo.netlify.app/](https://ubhackingdemo.netlify.app/)
 
 ---
 
