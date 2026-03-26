@@ -1,0 +1,87 @@
+.hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  min-height: 100vh; /* Changed from 90vh to fit screen */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  overflow: hidden;
+  background-image: url('/Pokemon_Reference_Images/stitch_ub_hacking_website_prd_hero_bg/screen.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.titleWrapper {
+  position: relative;
+  margin-bottom: 2rem;
+  z-index: 5;
+}
+
+.title {
+  font-family: var(--font-press-start-2p), cursive;
+  font-size: 5rem;
+  color: #ffcb05;
+  text-shadow: 
+    6px 6px 0px #3c5aa6,
+    -2px -2px 0px #3c5aa6,
+    2px -2px 0px #3c5aa6,
+    -2px 2px 0px #3c5aa6;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-family: var(--font-gaegu), cursive;
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-top: 1rem;
+}
+
+.registerButton {
+  position: relative;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 1.5rem 3rem;
+  font-family: var(--font-gaegu), cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px 60px 12px 40px / 40px 12px 60px 12px;
+  transition: transform 0.2s ease;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+.registerButton:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.cloud {
+  position: absolute;
+  z-index: 1;
+}
+
+.spark {
+  position: absolute;
+  z-index: 2;
+}
+
+.backgroundIllustrations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+}

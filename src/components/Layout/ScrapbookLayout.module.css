@@ -1,0 +1,43 @@
+.layout {
+  min-height: 100vh;
+  width: 100%;
+  background: #fefaf0; /* Fallback */
+  position: relative;
+  overflow-x: hidden;
+  font-family: var(--font-gaegu), cursive;
+}
+
+.paperTexture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  opacity: 0.5;
+  pointer-events: none;
+  object-fit: cover;
+}
+
+.mainContent {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Global sketchy utility classes */
+.sketchyBorder {
+  border: 3px solid #1a1a1a;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.sketchyText {
+  font-family: var(--font-indie-flower), cursive;
+}
+
+.boldSketchy {
+  font-family: var(--font-gaegu), cursive;
+  font-weight: 700;
+}

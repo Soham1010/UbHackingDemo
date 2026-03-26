@@ -1,0 +1,156 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: #050a10;
+}
+
+.backgroundContainer {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  z-index: -2;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6) contrast(1.1) saturate(1.2) blur(1px);
+}
+
+.loadingContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #fefaf0; /* Paper-like fallback color */
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  max-width: 1200px; /* Adjust based on typical screen size */
+  max-height: 675px; /* 16:9 aspect ratio */
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Position Pikachu inside the notebook sketch */
+.pikachuWrapper {
+  position: absolute;
+  top: 39%; /* Centered in the notebook sketch */
+  left: 50.5%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+}
+
+.pikachu {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.loadingInfo {
+  position: absolute;
+  top: 80%; /* Positioned at exactly 4/5th of the screen height */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; /* Widened to accommodate single-line text */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Remove loadingText as it's already in the background image */
+.loadingText {
+  display: none;
+}
+
+.loadingBarContainer {
+  width: 100%;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 3px solid #1a1a1a; /* Added border as requested */
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loadingBarFill {
+  height: 100%;
+  background: #ffcb05;
+  border-radius: 0; /* Keep it straight inside the pill */
+}
+
+.loadingSubtitle {
+  font-family: var(--font-gaegu), cursive;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  opacity: 0.8;
+  white-space: nowrap; /* Ensure text stays on one line */
+}
+
+/* Decorative Paper Effects */
+.vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.05) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pikachuWrapper {
+    width: 200px;
+    height: 150px;
+  }
+  
+  .loadingText {
+    font-size: 1.8rem;
+  }
+  
+  .loadingBarContainer {
+    width: 250px;
+    height: 35px;
+  }
+}
