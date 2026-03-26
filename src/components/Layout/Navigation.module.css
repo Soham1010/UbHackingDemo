@@ -1,80 +1,402 @@
+/* ══════════════════════════════════════════
+   NAV BAR
+══════════════════════════════════════════ */
 .nav {
   position: sticky;
   top: 0;
   width: 100%;
-  padding: 1.5rem 2rem;
-  background: rgba(254, 250, 240, 0.8);
-  backdrop-filter: blur(10px);
   z-index: 100;
+  padding: 0.75rem 2.5rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #1a1a1a;
+  gap: 1.5rem;
+
+  background: rgba(254, 250, 240, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 2.5px solid rgba(26, 26, 26, 0.12);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
-.logo {
-  display: none; /* Already in background images */
-  font-family: var(--font-press-start-2p), cursive;
-  font-size: 1.2rem;
-  color: #1a1a1a;
+/* Elevated state after scrolling */
+.navScrolled {
+  background: rgba(254, 250, 240, 0.96);
+  border-bottom-color: #ffcb05;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Brand ── */
+.brand {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
+  text-decoration: none;
+  flex-shrink: 0;
 }
 
+.pokeballIcon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  transition: transform 0.4s ease;
+}
+
+.brand:hover .pokeballIcon {
+  transform: rotate(180deg);
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 2px;
+}
+
+.brandName {
+  font-family: var(--font-press-start-2p), monospace;
+  font-size: 0.85rem;
+  color: #1a1a1a;
+  /* Yellow text shadow stack for "glow" feel */
+  text-shadow:
+    2px 2px 0px #ffcb05,
+    3px 3px 0px rgba(0,0,0,0.15);
+  letter-spacing: 0.02em;
+}
+
+.brandSub {
+  font-family: var(--font-indie-flower), cursive;
+  font-size: 0.72rem;
+  color: #3c5aa6;
+  letter-spacing: 0.03em;
+}
+
+/* ── Nav links ── */
 .links {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .link {
   font-family: var(--font-gaegu), cursive;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
+  color: #333;
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.link:hover {
   color: #1a1a1a;
-  cursor: pointer;
+  background: rgba(255, 203, 5, 0.18);
+}
+
+/* Yellow underline bar on hover */
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2.5px;
+  background: #ffcb05;
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.link:hover::after {
+  width: 60%;
+}
+
+/* ── Register button ── */
+.registerBtn {
+  flex-shrink: 0;
+  padding: 0.55rem 1.4rem;
+  background: #ffcb05;
+  color: #1a1a1a;
+  font-family: var(--font-gaegu), cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: 2.5px solid #1a1a1a;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 3px 0px #1a1a1a;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+}
+
+.registerBtn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px #1a1a1a;
+}
+
+.registerBtn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px #1a1a1a;
+}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.footer {
+  width: 100%;
+  background: #1a1a1a;
+  color: #fff;
+  margin-top: 6rem;
   position: relative;
 }
 
-.link:after {
-  content: '';
+/* Wavy grass top edge */
+.footerWave {
+  width: 100%;
+  line-height: 0;
+  margin-top: -2px;
+}
+
+.footerWave svg {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
+/* Main body */
+.footerBody {
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 2rem 0;
+}
+
+/* ── Floating decorative pokeballs ── */
+.decoBall {
   position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: #ffcb05;
-  transition: width 0.3s ease;
+  opacity: 0.06;
+  pointer-events: none;
 }
 
-.link:hover:after {
-  width: 100%;
+.decoBall1 { width: 200px; height: 200px; top: -40px; right: 5%;  }
+.decoBall2 { width: 140px; height: 140px; bottom: 60px; left: 2%; }
+.decoBall3 { width: 90px;  height: 90px;  top: 40%;  right: 28%;  }
+
+/* ── Three-column grid ── */
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
 }
 
-.footer {
-  width: 100%;
-  padding: 4rem 2rem;
-  background: #1a1a1a;
-  color: #fff;
-  text-align: center;
-  margin-top: 6rem;
+/* ── Column shared ── */
+.footerCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.footerText {
+/* ── Brand column ── */
+.footerBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.footerPokeball {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.footerBrandName {
+  font-family: var(--font-press-start-2p), monospace;
+  font-size: 0.8rem;
+  color: #ffcb05;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+.footerTagline {
+  font-family: var(--font-gaegu), cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffcb05;
+  margin: 0;
+}
+
+.footerDesc {
+  font-family: var(--font-indie-flower), cursive;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 300px;
+}
+
+/* Social icons */
+.socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.socialLink {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.45);
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.socialLink:hover {
+  border-color: #ffcb05;
+  color: #ffcb05;
+  background: rgba(255,203,5,0.1);
+  transform: translateY(-3px);
+}
+
+/* ── Column title ── */
+.footerColTitle {
   font-family: var(--font-gaegu), cursive;
   font-size: 1.2rem;
-  opacity: 0.8;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ffcb05;
+  display: inline-block;
+  align-self: flex-start;
 }
 
-.socials {
-  margin-top: 2rem;
+/* ── Footer nav links ── */
+.footerLinks {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 0.45rem;
 }
 
+.footerLink {
+  font-family: var(--font-indie-flower), cursive;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.footerLink:hover {
+  color: #ffcb05;
+  transform: translateX(4px);
+}
+
+.footerLinkArrow {
+  font-size: 0.5rem;
+  color: #ffcb05;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+/* ── Info list ── */
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-indie-flower), cursive;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.infoIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── Bottom bar ── */
+.footerBottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.footerBottomLine {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,203,5,0.4), transparent);
+  margin-bottom: 1.25rem;
+}
+
+.footerBottomContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.copyright {
+  font-family: var(--font-indie-flower), cursive;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.madeWith {
+  font-family: var(--font-indie-flower), cursive;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.45);
+}
+
+.madeWith strong {
+  color: #ffcb05;
+}
+
+.heart {
+  display: inline-block;
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.25); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.15); }
+  56%       { transform: scale(1); }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
 @media (max-width: 768px) {
+  .nav {
+    padding: 0.75rem 1.25rem;
+  }
+
   .links {
     display: none;
+  }
+
+  .brandSub {
+    display: none;
+  }
+
+  .registerBtn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
   }
 }
