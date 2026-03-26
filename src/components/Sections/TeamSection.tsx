@@ -74,7 +74,7 @@ const TeamSection = () => {
             viewport={{ once: true }}
             transition={{ delay: i * 0.08, duration: 0.45 }}
             whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            style={{ rotate: i % 2 === 0 ? -1.5 : 1.5 } as React.CSSProperties}
+            style={{ rotate: `${i % 2 === 0 ? -1.5 : 1.5}deg` } as React.CSSProperties}
           >
             <div className={styles.badge}>{member.badge}</div>
             <div className={styles.imageWrap}>
