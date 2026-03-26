@@ -380,6 +380,180 @@
 }
 
 /* ══════════════════════════════════════════
+   TRAIN SCENE
+══════════════════════════════════════════ */
+
+/* Outer scene container — overflow visible so tooltips can escape upward */
+.trainScene {
+  width: 100%;
+  height: 145px;
+  position: relative;
+  overflow: visible;         /* allows name-tag tooltips to show above */
+  background: linear-gradient(to bottom, #111120 60%, #0f1f0f 100%);
+}
+
+/* Inner clip wrapper — clips the moving train horizontally only */
+.trainClip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;          /* horizontal clipping for the train scroll */
+  pointer-events: none;
+}
+.trainClip > * {
+  pointer-events: auto;
+}
+
+/* Dark green ground strip */
+.trainGround {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to bottom, #1a3a1a, #0f2a0f);
+  z-index: 0;
+}
+
+/* Railroad ties — brown repeating stripes */
+.trainTies {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 18px,
+    #4a3020 18px,
+    #4a3020 32px
+  );
+  z-index: 1;
+}
+
+/* Rail shared */
+.trainRail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #888, #aaa 30%, #888);
+  border-radius: 2px;
+  z-index: 2;
+}
+.trainRailBot { bottom: 18px; }
+.trainRailTop { bottom: 30px; }
+
+/* ── Moving train ── */
+@keyframes trainRoll {
+  from { transform: translateX(calc(100vw + 80px)); }
+  to   { transform: translateX(-950px); }
+}
+
+@keyframes smokeDrift {
+  0%   { opacity: 0.35; transform: translateY(0) scale(1); }
+  100% { opacity: 0;    transform: translateY(-18px) scale(1.6); }
+}
+
+.train {
+  position: absolute;
+  bottom: 22px;   /* wheel bottoms rest on rail */
+  left: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  z-index: 3;
+  will-change: transform;
+  animation: trainRoll 22s linear infinite;
+  cursor: pointer;
+}
+
+/* Pause entire train on hover */
+.train:hover {
+  animation-play-state: paused;
+}
+
+/* Shared SVG sizing — aspect ratio preserved */
+.trainSvg {
+  height: 95px;
+  width: auto;
+  display: block;
+}
+
+/* Smoke animations */
+.smoke1 { animation: smokeDrift 1.8s ease-out infinite; }
+.smoke2 { animation: smokeDrift 1.8s ease-out 0.4s infinite; }
+.smoke3 { animation: smokeDrift 1.8s ease-out 0.8s infinite; }
+
+/* Locomotive wrapper */
+.trainLoco {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Passenger car wrapper */
+.trainCar {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* ── Name tag tooltip ── */
+.nameTag {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+
+  background: rgba(8, 8, 20, 0.96);
+  border: 1.5px solid #ffcb05;
+  border-radius: 8px;
+  padding: 6px 14px 7px;
+  white-space: nowrap;
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Arrow pointing down */
+.nameTag::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #ffcb05;
+}
+
+.trainCar:hover .nameTag,
+.trainLoco:hover .nameTag {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nameTagName {
+  font-family: var(--font-press-start-2p), monospace;
+  font-size: 0.45rem;
+  color: #ffcb05;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+}
+
+.nameTagRole {
+  font-family: var(--font-indie-flower), cursive;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ══════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════ */
 @media (max-width: 768px) {
